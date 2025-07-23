@@ -14,6 +14,7 @@ describe('Register Use Case', () => {
             email: 'horacio@email.com',
             password: '123456',
     })
+    
         expect(user.id).toEqual(expect.any(String))
     })
 
@@ -43,7 +44,7 @@ describe('Register Use Case', () => {
             password: '123456',
         })
 
-        expect(() => 
+        await expect(() => // sempre que tiver um reject devo colocar o await
             registerUseCase.execute({
                 name: 'Horácio',
                 email,
