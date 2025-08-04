@@ -4,19 +4,16 @@ import { compare } from 'bcryptjs'
 import { InMemoryUsersRepository } from '@/repositories/in-memory-database/in-memory-database-users'
 import { UserAlreadyExist } from './errors/user-already-exist-error'
 
-// const usersRepository = new InMemoryUsersRepository()
-// const registerUseCase = new RegisterUseCase(usersRepository)
-
 let usersRepository: InMemoryUsersRepository
 let sut: RegisterUseCase
 
 describe('Register Use Case', () => {
-    it('possivel de criar um usuário', async () => {
-        beforeEach(() => {
+    beforeEach(() => {
             usersRepository = new InMemoryUsersRepository()
             sut = new RegisterUseCase(usersRepository)
         })
 
+    it('possivel de criar um usuário', async () => {
     const { user } = await sut.execute({
             name: 'Horácio',
             email: 'horacio@email.com',

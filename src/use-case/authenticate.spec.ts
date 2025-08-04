@@ -26,7 +26,7 @@ describe('Register Use Case', () => {
         password: '123456',
     })
     
-        expect(user.id).toEqual(expect.any(String))
+     expect(user.id).toEqual(expect.any(String))
     })
 
     it('não é possivel autenticar com um email errado', async () => {
