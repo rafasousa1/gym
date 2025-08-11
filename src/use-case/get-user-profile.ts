@@ -17,7 +17,7 @@ export class GetUserProfile {
         const user = await this.user.findById(userId)
 
         if (!user) {
-            throw new ResourceNotFoundError
+            throw new ResourceNotFoundError()
         }
 
         return { user }
