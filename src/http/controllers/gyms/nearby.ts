@@ -12,7 +12,7 @@ export async function nearby(req: FastifyRequest, reply: FastifyReply) {
         })
     })
 
-    const { latitude, longitude } = nearbyGymsQuerySchema.parse(req.body)
+    const { latitude, longitude } = nearbyGymsQuerySchema.parse(req.query)
 
         const fetchNearbyGymUseCase = makeFetchNearbyGymsUseCase() // como o caso de uso não tem nenhuma validação de erro, não coloco o try catch
         

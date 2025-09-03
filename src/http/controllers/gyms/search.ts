@@ -8,7 +8,7 @@ export async function search(req: FastifyRequest, reply: FastifyReply) {
         page: z.coerce.number().min(1).default(1)
     })
 
-    const { search, page } = searchGymsQuerySchema.parse(req.body)
+    const { search, page } = searchGymsQuerySchema.parse(req.query)
 
         const createGymUseCase = makeSearchGymsUseCase() // como o caso de uso não tem nenhuma validação de erro, não coloco o try catch
         
