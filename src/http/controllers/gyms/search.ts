@@ -18,6 +18,6 @@ export async function search(req: FastifyRequest, reply: FastifyReply) {
         })
 
         return reply.status(200).send(
-            gyms
+            { gyms }
         )
     }

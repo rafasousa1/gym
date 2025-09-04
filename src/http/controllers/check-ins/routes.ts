@@ -7,7 +7,7 @@ import { validate } from './validate'
 import { history } from './history'
 import { metrics } from './metrics'
 
-export default async function CheckInsRoutes(app: FastifyInstance) { // separando controller de usuários e de academias
+export default async function checkInsRoutes(app: FastifyInstance) { // separando controller de usuários e de academias
     app.addHook('onRequest', verifyJWT) // todas as rotas aqui vão chamar o hook do JWT
 
     app.get('/check-ins/hisotry', history)

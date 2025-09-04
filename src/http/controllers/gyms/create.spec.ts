@@ -3,7 +3,7 @@ import { app } from '@/app'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { createAndAuthenticateUser } from '@/utils/test/create-and-auth-user'
 
-describe('Profile (e2e)', () => {
+describe('Create Gym (e2e)', () => {
     beforeAll( async () => {
         await app.ready() // esperar que o app esteja pronto para rodar
     })
@@ -12,20 +12,21 @@ describe('Profile (e2e)', () => {
         await app.close() // depois que tudo rodar espero que o app encerre
     })
 
-    it('possivel de retornar perfil do usuário', async () => {
+    it('possivel de criar academia', async () => {
         const { token } = await createAndAuthenticateUser(app)
 
-        const profileResponse = await request(app.server)
-        .get('/me')
+        const response = await request(app.server)
+        .post('/gyms')
         .set('Authorization', `Bearer ${token}`) // faço a chamada para o perfil
-        .send()
+        .send({
+            title: 'Ts-Gym',
+            description: 'description...',
+            phone: '1199898',
+            latitude: -27.6003306,
+            longitude: -45.6744122
+        })
 
-        expect(profileResponse.statusCode).toEqual(200)
-         expect(profileResponse.body).toEqual( // espero que na resposta do perfil, tenha o email do user validado
-            expect.objectContaining({
-            email: 'horacio@email.com',
-         })
-        )
+        expect(response.statusCode).toEqual(201)
     })
 })
 
