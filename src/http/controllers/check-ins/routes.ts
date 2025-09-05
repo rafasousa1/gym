@@ -10,7 +10,7 @@ import { metrics } from './metrics'
 export default async function checkInsRoutes(app: FastifyInstance) { // separando controller de usuários e de academias
     app.addHook('onRequest', verifyJWT) // todas as rotas aqui vão chamar o hook do JWT
 
-    app.get('/check-ins/hisotry', history)
+    app.get('/check-ins/history', history)
     app.get('/check-ins/metrics', metrics)
 
     app.post('/gyms/:gymId/check-ins', create) // procurando academia pelo id para fazer o check-in
